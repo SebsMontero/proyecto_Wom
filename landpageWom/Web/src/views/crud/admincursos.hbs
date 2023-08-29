@@ -1,0 +1,224 @@
+<head>
+
+    <title>Administrar Cursos</title>
+
+</head>
+
+<div class="content content-page">
+    <div class="container-fluid">
+        {{!-- Titulo pagina --}}
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Administración de Cursos</h4>
+                </div>
+            </div>
+        </div>
+        {{!-- Fin Titulo pagina --}}
+
+        {{!-- Formulario --}}
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        {{> message }}
+                        <h4 class="header-title">Registrar Curso</h4>
+                        {{!-- Modal Crud Registrar Usuarios--}}
+                        <div class="button-list">
+                            <button type="button" class="btn btn-secondary waves-effect waves-light" data-toggle="modal"
+                                data-target="#crud_AdminUsuarios_registro"><i class="fas fa-plus"></i></button>
+                            <br /><br />
+                        </div>
+
+                        <div class="modal fade" id="crud_AdminUsuarios_registro" tabindex="-1" role="dialog"
+                            aria-labelledby="crud_AdminUsuarios_registroTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="crud_AdminUsuarios_registroTitle"><i
+                                                class="fas fa-plus"></i> Registrar Nuevo Curso</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/admincursos" method="POST">
+                                            <div class="form-row">
+                                                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                    <label for="txtcargo" class="col-form-label">Cargo</label>
+                                                    <input type="text" name="cargo" id="txtcargo"
+                                                        class="form-control form-control-1" value="{{user.USU_CROL}}"
+                                                        autocomplete="off" readonly>
+                                                </div>
+                                                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                    <label for="txtresponsable_gestion"
+                                                        class="col-form-label">Responsable Gestión</label>
+                                                    <input type="text" name="responsable_gestion"
+                                                        id="txtresponsable_gestion" class="form-control form-control-1"
+                                                        value="{{user.USU_CNOMBRES_APELLIDOS}}" autocomplete="off"
+                                                        readonly>
+                                                </div>
+
+                                                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                    <label for="txtnombre_curso" class="col-form-label">Nombre
+                                                        Curso</label>
+                                                    <input type="text" name="nombre_curso" id="txtnombre_curso"
+                                                        class="form-control" data-toggle="tooltip"
+                                                        data-placement="bottom" onkeyup="mayus(this);" placeholder=""
+                                                        autocomplete="off" required autofocus>
+                                                </div>
+
+                                                <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                    <label for="txtestado_curso" class="col-form-label">Estado</label>
+                                                    <input type="text" name="estado_curso" id="txtestado_curso"
+                                                        list="crud_Estado_Cursos" class="form-control"
+                                                        data-toggle="tooltip" data-placement="bottom" placeholder=""
+                                                        autocomplete="off" required>
+                                                </div>
+                                            </div>
+                                            <center>
+                                                <button type="submit" name="action"
+                                                    class="btn btn-secondary btn-rounded waves-effect waves-light">
+                                                    <span class="btn-label"><i class="fas fa-database"></i></span>Crear
+                                                    Curso
+                                                </button>
+                                            </center>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{!-- Fin Modal Crud Registrar Usuarios--}}
+
+                        {{!-- Tabla Listar Usuarios --}}
+                        <div class="table-responsive">
+                            <table id="Reporte_Admin_Cursos" class="table table-striped dt-responsive nowrap"
+                                style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <center>ID</center>
+                                        </th>
+                                        <th>
+                                            <center>EDITAR</center>
+                                        </th>
+                                        <th>
+                                            <center>NOMBRE CURSO</center>
+                                        </th>
+                                        <th>
+                                            <center>ESTADO</center>
+                                        </th>
+                                        <th>
+                                            <center>CARGO</center>
+                                        </th>
+                                        <th>
+                                            <center>RESPONSABLE</center>
+                                        </th>
+                                        <th>
+                                            <center>FECHA REGISTRO</center>
+                                        </th>
+                                        <th>
+                                            <center>ÚLTIMA ACTUALIZACIÓN</center>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each users}}
+                                    <tr>
+                                        <td>{{PKCUR_NCODIGO}}</td>
+                                        <td>
+                                            {{!-- Modal Crud Actualizar Usuarios--}}
+                                            <center><a><button type="button"
+                                                        class="btn btn-secondary waves-effect waves-light"
+                                                        data-toggle="modal"
+                                                        data-target="#crud_AdminUsuarios_actualizar_{{PKCUR_NCODIGO}}"><i
+                                                            class="fas fa-edit"></i></button></a></center>
+                                            {{!-- Modal Crud Actualizar Usuarios--}}
+                                            <div class="modal fade" id="crud_AdminUsuarios_actualizar_{{PKCUR_NCODIGO}}"
+                                                tabindex="-1" role="dialog"
+                                                aria-labelledby="crud_AdminUsuarios_actualizarTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg modal-dialog-scrollable"
+                                                    role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title"
+                                                                id="crud_AdminUsuarios_actualizarTitle"><i
+                                                                    class="fas fa-edit"></i> Actualizar Usuarios</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="/admincursos/{{PKCUR_NCODIGO}}"
+                                                                method="POST">
+                                                                <div class="form-row">
+
+                                                                    <div
+                                                                        class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                                        <label for="txtnombre_curso"
+                                                                            class="col-form-label">Nombre Curso</label>
+                                                                        <input type="text" name="nombre_curso"
+                                                                            id="txtnombre_curso" class="form-control"
+                                                                            data-toggle="tooltip"
+                                                                            data-placement="bottom"
+                                                                            onkeyup="mayus(this);" 
+                                                                            value="{{CUR_CNOMBRE_CURSO}}"
+                                                                            autocomplete="off" required>
+                                                                    </div>
+
+                                                                    <div
+                                                                        class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                                        <label for="txtestado_curso"
+                                                                            class="col-form-label">Estado</label>
+                                                                        <input type="text" name="estado_curso"
+                                                                            id="txtestado_curso"
+                                                                            list="crud_Estado_Cursos"
+                                                                            class="form-control" data-toggle="tooltip"
+                                                                            data-placement="bottom" value="{{CUR_CESTADO}}"
+                                                                            autocomplete="off" required>
+                                                                    </div>
+                                                                </div>
+                                                                <center>
+                                                                    <button type="submit" name="action"
+                                                                        class="btn btn-secondary btn-rounded waves-effect waves-light">
+                                                                        <span class="btn-label"><i
+                                                                                class="fas fa-database"></i></span>
+                                                                        Actualizar Curso
+                                                                    </button>
+                                                                </center>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Cerrar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {{!-- Fin Modal Crud Actualizar Usuarios--}}
+                                        </td>
+                                        <td>{{CUR_CNOMBRE_CURSO}}</td>
+                                        <td>{{CUR_CESTADO}}</td>
+                                        <td>{{CUR_CCARGO}}</td>
+                                        <td>{{CUR_CRESPONSABLE_GESTION}}</td>
+                                        <td>{{CUR_CFECHA_REGISTRO}}</td>
+                                        <td>{{CUR_CFECHA_MODIFICACION}}</td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                        {{!-- Fin Tabla Listar Usuarios --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/reporting/datatable_cursos.js"></script>

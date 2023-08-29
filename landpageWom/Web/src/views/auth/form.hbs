@@ -1,0 +1,116 @@
+<head>
+
+  <title>Form</title>
+
+</head>
+
+<body class="authentication-bg authentication-bg-pattern">
+
+  <div class="navbar navbar-expand-lg navbar-light bg-light justify-content-end">
+    <ul class="list-unstyled topnav-menu float-right mb-0">
+      <li class="dropdown notification-list">
+        <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button"
+          aria-haspopup="false" aria-expanded="false">
+          <i class="fe-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+          <a href="/login" class="dropdown-item notify-item">
+            <i class="fe-user"></i>
+            <span>Login</span>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  {{!-- Contenido Login --}}
+  <div class="account-pages mt-5 mb-5">
+    <div class="container">      
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-12 col-xl-8">
+          <div class="card">
+            
+            <div class="card-body p-4">
+               {{> message }}
+              <center class="p-4">
+                <h1>LANDING PAGE WOM</h1>
+              </center>
+
+              <form action="/form" method="POST">
+                <div class="form-row">
+
+                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <div class="input-group-prepend">
+                      <label for="txttipo_documento" class="form-control-label text-muted">Tipo de Documento</label>
+                    </div>
+                    <select class="custom-select form-control" name="tipo_documento" id="txttipo_documento" required>
+                      <option value="">Elige una opción</option>
+                      <option value="CEDULA DE CIUDADANIA">CEDULA DE CIUDADANIA</option>
+                      <option value="TARJETA DE IDENTIDAD">TARJETA DE IDENTIDAD</option>
+                      <option value="CEDULA DE EXTRANJERIA">CEDULA DE EXTRANJERIA</option>
+                      <option value="PASAPORTE">PASAPORTE</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <label class="form-control-label text-muted" for="txtdocumento">No. Documento</label>
+                    <input type="text" name="documento" id="txtdocumento" class="form-control" data-toggle="tooltip"
+                      data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)"
+                      autocomplete="off" maxlength="20" required>
+                  </div>
+
+                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <label class="form-control-label text-muted" for="txtnombres">
+                      Nombres</label>
+                    <input type="text" name="nombres" id="txtnombres" class="form-control"
+                      data-toggle="tooltip" data-placement="bottom" placeholder="" onkeyup="mayus(this);"
+                      autocomplete="off" maxlength="100" required>
+                  </div>
+                  
+                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <label class="form-control-label text-muted" for="txtapellidos">
+                      Apellidos</label>
+                    <input type="text" name="apellidos" id="txtapellidos" class="form-control"
+                      data-toggle="tooltip" data-placement="bottom" placeholder="" onkeyup="mayus(this);"
+                      autocomplete="off" maxlength="100" required>
+                  </div>
+
+                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <label class="form-control-label text-muted" for="txttelefono">Telefono</label>
+                    <input type="tel" name="telefono" id="txttelefono" class="form-control" data-toggle="tooltip"
+                      data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)" autocomplete="off" maxlength="10" required>
+                  </div>
+
+                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <label class="form-control-label text-muted" for="txtcorreo">Correo Electronico</label>
+                    <input type="email" name="correo" id="txtcorreo" class="form-control" onkeyup="mayus(this);" data-toggle="tooltip" data-placement="bottom" placeholder="" autocomplete="off" required>
+                  </div>
+
+                  <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="input-group-prepend">
+                      <label for="txtcursos_disponibles" class="form-control-label text-muted">Cursos Disponibles</label>
+                    </div>
+                    <select class="custom-select form-control" name="cursos_disponibles" id="txtcursos_disponibles" autofocus
+                      required>
+                      <option value="">Elige una opción</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div class="form-group mb-0 text-center">
+                  <button type="submit" id="inicio_sesion" class="btn btn-secondary btn-rounded waves-effect waves-light">
+                    <span class="btn-label"><i class="fas fa-sign-in-alt"></i></span>Enviar Datos
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{!-- Fin Contenido Login --}}
+</body>
+
+
+<script src="js/reporting/cursos_disponibles.js"></script>
