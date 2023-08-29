@@ -30,7 +30,7 @@
         <div class="col-md-12 col-lg-12 col-xl-8">
           <div class="card">
             
-            <div class="card-body p-4">
+            <div class="card-body p-5">
                {{> message }}
               <center class="p-4">
                 <h1>LANDING PAGE WOM</h1>
@@ -50,6 +50,13 @@
                       <option value="CEDULA DE EXTRANJERIA">CEDULA DE EXTRANJERIA</option>
                       <option value="PASAPORTE">PASAPORTE</option>
                     </select>
+                  </div>
+
+                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <label class="form-control-label text-muted" for="txtdocumento">Caso TT</label>
+                    <input type="text" name="documento" id="txtdocumento" class="form-control" data-toggle="tooltip"
+                      data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)"
+                      autocomplete="off" maxlength="20" required>
                   </div>
 
                   <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -93,6 +100,9 @@
                     <select class="custom-select form-control" name="cursos_disponibles" id="txtcursos_disponibles" autofocus
                       required>
                       <option value="">Elige una opción</option>
+                      <option value="">Hola 1</option>
+                      <option value="">Hola 2</option>
+                      <option value="">Hola 3</option>
                     </select>
                   </div>
 
