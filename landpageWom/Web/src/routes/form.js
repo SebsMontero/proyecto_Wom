@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const pool = require('../database');
 const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
+const { database } = require('../keys');
+const DB = database.database;
 
 router.get('/form', isNotLoggedIn, (req, res, next) => {
   try {
@@ -14,7 +16,7 @@ router.post('/form', isNotLoggedIn, async (req, res) => {
   try {
     const { tipo_documento, documento, nombres, apellidos, telefono, correo, cursos_disponibles } = req.body;
     console.log(req.body);
-    const consulta = "SELECT * FROM tbl_rformulario_cursos WHERE FOR_CTIPO_DOCUMENTO = '" + tipo_documento + "' AND FOR_CCORREO_ELECTRONICO = '" + correo + "';"
+    const consulta = "SELECT * FROM ${DB}.tbl_rformulario_cursos WHERE FOR_CCASO_TT = '" + tipo_documento + "';"
     console.log(consulta);
     const result = await pool.query(consulta);
     console.log(result)
