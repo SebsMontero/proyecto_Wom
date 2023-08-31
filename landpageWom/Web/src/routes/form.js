@@ -14,9 +14,9 @@ router.get('/form', isNotLoggedIn, (req, res, next) => {
 
 router.post('/form', isNotLoggedIn, async (req, res) => {
   try {
-    const { tipo_documento, documento, nombres, apellidos, telefono, correo, cursos_disponibles } = req.body;
+    const { casott, causal, segmento, regional, tipo_transaccion, transaccion, asesor, canal_ventas, telefono_asesor} = req.body;
     console.log(req.body);
-    const consulta = "SELECT * FROM ${DB}.tbl_rformulario_cursos WHERE FOR_CCASO_TT = '" + tipo_documento + "';"
+    /* const consulta = "SELECT * FROM ${DB}.tbl_rformulario_cursos WHERE FOR_CCASO_TT = '" + tipo_documento + "';"
     console.log(consulta);
     const result = await pool.query(consulta);
     console.log(result)
@@ -25,23 +25,26 @@ router.post('/form', isNotLoggedIn, async (req, res) => {
       messagge = 'Ya te encuentras registrado en el curso de: ' + result[0].FOR_CCURSO_INTERES
       req.flash('message', messagge);
       res.redirect('/form');
-    } else {
-      console.log('Registrando')
-      const newUser = {
-        FOR_CTIPO_DOCUMENTO: tipo_documento,
-        FOR_CNUMERO_DOCUMENTO: documento,
-        FOR_CNOMBRES: nombres,
-        FOR_CAPELLIDOS: apellidos,
-        FOR_CTELEFONO: telefono,
-        FOR_CCORREO_ELECTRONICO: correo,
-        FOR_CCURSO_INTERES: cursos_disponibles,
-      };
-      await pool.query('INSERT INTO tbl_rformulario_cursos set ?', [newUser]);
-      req.flash('success', 'Registrado Correctamente!');
-      res.redirect('/form');
-    }
+    } else { */
+    console.log('Registrando')
+    const newCase = {
+      FOR_CCASO_TT: casott,
+      FOR_CCASUAL_ESCALAMIENTO: causal,
+      FOR_CSEGMENTO: segmento,
+      FOR_CREGIONAL: regional,
+      FOR_CTIPO_TRANSACCION: tipo_transaccion,
+      FOR_CTRANSACCION: transaccion,
+      FOR_CNOMBRE_CREADOR: asesor,
+      FOR_CCANAL_VENTAS_CREADOR: canal_ventas,
+      FOR_CNUMERO_CREADOR: telefono_asesor
+    };
+    const sql = `INSERT INTO ${DB}.tbl_rformulario_cursos set ?`;
+    await pool.query(sql, [newCase]);
+    req.flash('success', 'Registrado Correctamente!');
+    res.redirect('/form');
+    
   } catch {
-    req.flash('message', 'Ups! hubo un error en el registro');
+    req.flash('message', 'Ups! hubo un error en el registro del caso');
     res.redirect('/form');
   }
 })
@@ -49,28 +52,19 @@ router.post('/form', isNotLoggedIn, async (req, res) => {
 // ---------------------------------
 
 
-/* Estudiantes */
-router.get('/adminestudiantes', isLoggedIn, async (req, res) => {
+/* Casos TT */
+router.get('/admincasos', isLoggedIn, async (req, res) => {
   try {
-    const gestor_asiganado = req.user.USU_CUSUARIO;
-    if (req.user.USU_CROL == "Administrador") {
-      const users = await pool.query('SELECT * FROM tbl_rformulario_cursos');
-      res.render('crud/adminestudiantes', { users });
-    } else if (req.user.USU_CROL == "Gestor") {
-      const sql = "SELECT * FROM tbl_rformulario_cursos WHERE FOR_CGESTOR_ASIGNADO = '" + gestor_asiganado + "';"
-      console.log(sql);
-      const users = await pool.query(sql);
-      res.render('crud/adminestudiantes', { users });
-    } else {
-      res.redirect('/redirect');
-    }
+    const sql = `SELECT * FROM ${DB}.tbl_rformulario_escalamiento`;
+    const users = await pool.query(sql);
+    res.render('crud/admincasos', { users });
   } catch (error) {
     res.render('401');
   }
 });
 
 /* Modificar Estudiantes */
-router.post('/adminestudiantes/:id', isLoggedIn, async (req, res) => {
+/* router.post('/adminestudiantes/:id', isLoggedIn, async (req, res) => {
   const { id } = req.params;
   const { gestor, observaciones, estado_estudiante } = req.body;
   console.log(req.body.gestor);
@@ -82,11 +76,11 @@ router.post('/adminestudiantes/:id', isLoggedIn, async (req, res) => {
   await pool.query('UPDATE tbl_rformulario_cursos set ? WHERE PKFOR_NCODIGO = ?', [newMensaje, [id]]);
   req.flash('success', 'Estudiante Actualizado Correctamente!!!');
   res.redirect('/adminestudiantes');
-});
+}); */
 
 
 /* Consultas */
-router.post('/consultacursos', async (req, res) => {
+/* router.post('/consultacursos', async (req, res) => {
   try {    
       const sql = "SELECT * FROM tbl_rcursos_disponibles WHERE CUR_CESTADO = 'Activo';"
       // console.log(sql);
@@ -96,9 +90,9 @@ router.post('/consultacursos', async (req, res) => {
   } catch (error) {
     console.log('Error')
   }
-});
+}); */
 
-router.post('/consultaGestores',  async (req, res) => {
+/* router.post('/consultaGestores',  async (req, res) => {
   try {
       const sql = "SELECT * FROM tbl_rusuarios WHERE USU_CROL = 'Gestor' AND USU_CESTADO = 'Activo';"
       // console.log(sql);
@@ -107,6 +101,6 @@ router.post('/consultaGestores',  async (req, res) => {
   } catch (error) {
     console.log('Error')
   }
-});
+}); */
 
 module.exports = router;

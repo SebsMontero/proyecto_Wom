@@ -24,14 +24,13 @@ router.get('/adminusuarios', isLoggedIn, async (req, res) => {
 
 /* Registro Usuario */
 router.post('/adminusuarios', isLoggedIn, async (req, res) => {
-    const { documento, nombres_apellidos, usuario, password, rol, estado_usuario, responsable_gestion } = req.body;
+    const { documento, nombres_apellidos, usuario, password, estado_usuario, responsable_gestion } = req.body;
     console.log(req.body);
     const newUser = {        
         USU_CDOCUMENTO: documento,
         USU_CNOMBRES_APELLIDOS: nombres_apellidos,
         USU_CUSUARIO: usuario,
         USU_CPASSWORD: password,
-        USU_CROL: rol,
         USU_CESTADO: estado_usuario,
         USU_CRESPONSABLE_GESTION: responsable_gestion
     };
@@ -60,7 +59,7 @@ router.post('/adminusuarios/:id', isLoggedIn, async (req, res) => {
         USU_CRESPONSABLE_GESTION: responsable_gestion
     };
     newUser.USU_CPASSWORD = await helpers.encryptPassword(password);
-    const sql = `UPDATE tbl_rusuarios set ? WHERE PKUSU_NCODIGO = ?`;
+    const sql = `UPDATE ${DB}.tbl_rusuarios set ? WHERE PKUSU_NCODIGO = ?`;
     await pool.query(sql, [newUser,[id]]);
     req.flash('success', 'Usuario Actualizado Correctamente!!!');
     res.redirect('/adminusuarios');
