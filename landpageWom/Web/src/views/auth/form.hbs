@@ -25,13 +25,17 @@
 
   {{!-- Contenido Login --}}
   <div class="account-pages mt-5 mb-5">
-    <div class="container">      
+    <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-12 col-lg-12 col-xl-8">
-          <div class="card">
-            
-            <div class="card-body p-5">
-               {{> message }}
+          <div class="card card1">
+
+            <div class="text-center w-55 m-auto">
+              <center><img height="130" src="img/logo/logo.jpg" alt="Responsive image" /></center>
+            </div>
+
+            <div class="card-body p-1">
+              {{> message }}
               <center class="p-4">
                 <h1>LANDING PAGE WOM</h1>
               </center>
@@ -39,76 +43,136 @@
               <form action="/form" method="POST">
                 <div class="form-row">
 
+                  <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <label class="form-control-label text-muted" for="txtcasott">Caso TT</label>
+                    <input type="text" name="tt" id="txtcasott" class="form-control" data-toggle="tooltip"
+                      data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)"
+                      autocomplete="off" maxlength="20" autofocus required>
+                  </div>
+
+                  <body>
+                    <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                      <div class="input-group-prepend">
+                        <label for="txtescalamiento" class="form-control-label text-muted">¿Ha sido escalado
+                          anteriormente?</label>
+                      </div>
+                      <select class="custom-select form-control" name="escalamiento" id="txtescalamiento" required>
+                        <option value="">Elige una opción</option>
+                        <option value="SI">SI</option>
+                        <option value="NO">NO</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6" id="causalEscalamientoSi"
+                      style="display: none;">
+                      <div class="input-group-prepend">
+                        <label for="txttipo_causal_antiguo" class="form-control-label text-muted">Causal de
+                          escalamiento</label>
+                      </div>
+                      <select class="custom-select form-control" name="tipo_causal_antiguo" id="txttipo_causal_antiguo">
+                        <option value="">Elige una opción</option>
+                        <option value="Caso no ha sido escalado.">Caso no ha sido escalado.</option>
+                        <option value="Llamar Nuevamente.">Llamar Nuevamente.</option>
+                        <option value="Confirmar Numero de Contacto.">Confirmar Numero de Contacto.</option>
+                        <option value="Continua la Restricción en Evidente, TT Aprobado.">Continua la Restricción en
+                          Evidente, TT Aprobado.</option>
+                        <option value="Continua la Restricción en Laft, TT Aprobado.">Continua la Restricción en Laft,
+                          TT Aprobado.</option>
+                        <option value="Continua la Restricción por Cupo, TT Aprobado.">Continua la Restricción por Cupo,
+                          TT Aprobado.</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6" id="causalEscalamientoNo"
+                      style="display: none;">
+                      <div class="input-group-prepend">
+                        <label for="txttipo_causal" class="form-control-label text-muted">Causal de escalamiento</label>
+                      </div>
+                      <select class="custom-select form-control" name="tipo_causal" id="txttipo_causal">
+                        <option value="">Elige una opción</option>
+                        <option value="EVIDENTE NO APROBADO">Evidente no aprobado</option>
+                        <option value="CAMBIO SIMCARD">Cambio simCard</option>
+                        <option value="Reposición de simCard desde call center">Reposición de simCard desde call center
+                        </option>
+                        <option value="Corrección de datos cedula o nombres">Corrección de datos cedula o nombres
+                        </option>
+                        <option value="Laft">Laft</option>
+                      </select>
+                    </div>
+                  </body>
+
                   <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <div class="input-group-prepend">
-                      <label for="txttipo_documento" class="form-control-label text-muted">Tipo de Documento</label>
+                      <label for="txtregional" class="form-control-label text-muted">Elige Regional</label>
                     </div>
-                    <select class="custom-select form-control" name="tipo_documento" id="txttipo_documento" required>
+                    <select class="custom-select form-control" name="regional" id="txtregional" autofocus required>
                       <option value="">Elige una opción</option>
-                      <option value="CEDULA DE CIUDADANIA">CEDULA DE CIUDADANIA</option>
-                      <option value="TARJETA DE IDENTIDAD">TARJETA DE IDENTIDAD</option>
-                      <option value="CEDULA DE EXTRANJERIA">CEDULA DE EXTRANJERIA</option>
-                      <option value="PASAPORTE">PASAPORTE</option>
+                      <option value="">Regional Antioquia</option>
+                      <option value="">Regional Centro.</option>
+                      <option value="">Regional Costa.</option>
+                      <option value="">Regional Eje Cafetero.</option>
+                      <option value="">Regional Occidente.</option>
+                      <option value="">Regional Oriente.</option>
                     </select>
                   </div>
 
                   <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <label class="form-control-label text-muted" for="txtdocumento">Caso TT</label>
-                    <input type="text" name="documento" id="txtdocumento" class="form-control" data-toggle="tooltip"
-                      data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)"
-                      autocomplete="off" maxlength="20" required>
+                    <label class="form-control-label text-muted" for="txttipo_transaccion">Tipo de transacción</label>
+                    <select class="custom-select form-control" name="tipo_transaccion" id="txttipo_transaccion"
+                      required>
+                      <option value="">Elige una opción</option>
+                      <option value="venta">Venta</option>
+                      <option value="posventa">Pos venta</option>
+                      <option value="cambionumero">Cambio de número</option>
+                    </select>
                   </div>
 
-                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <label class="form-control-label text-muted" for="txtdocumento">No. Documento</label>
-                    <input type="text" name="documento" id="txtdocumento" class="form-control" data-toggle="tooltip"
-                      data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)"
-                      autocomplete="off" maxlength="20" required>
+                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6" id="opcionesTransaccion">
+                    <div class="input-group-prepend">
+                      <label class="form-control-label text-muted" for="txtpos_venta">Transacción</label>
+                    </div>
+                    <select class="custom-select form-control" name="transaccion" id="txtpos_venta" autofocus required>
+                      <option value="">Elige una opción</option>
+                    </select>
                   </div>
 
-                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                  <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <label class="form-control-label text-muted" for="txtnombres">
-                      Nombres</label>
-                    <input type="text" name="nombres" id="txtnombres" class="form-control"
-                      data-toggle="tooltip" data-placement="bottom" placeholder="" onkeyup="mayus(this);"
-                      autocomplete="off" maxlength="100" required>
-                  </div>
-                  
-                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <label class="form-control-label text-muted" for="txtapellidos">
-                      Apellidos</label>
-                    <input type="text" name="apellidos" id="txtapellidos" class="form-control"
-                      data-toggle="tooltip" data-placement="bottom" placeholder="" onkeyup="mayus(this);"
-                      autocomplete="off" maxlength="100" required>
+                      Nombre Asesor</label>
+                    <input type="text" name="nombre" id="txtnombres" class="form-control" data-toggle="tooltip"
+                      data-placement="bottom" placeholder="" onkeyup="mayus(this);" autocomplete="off" maxlength="100"
+                      required>
                   </div>
 
                   <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <label class="form-control-label text-muted" for="txttelefono">Telefono</label>
+                    <label class="form-control-label text-muted" for="txttelefono">Telefono Asesor</label>
                     <input type="tel" name="telefono" id="txttelefono" class="form-control" data-toggle="tooltip"
-                      data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)" autocomplete="off" maxlength="10" required>
-                  </div>
-
-                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <label class="form-control-label text-muted" for="txtcorreo">Correo Electronico</label>
-                    <input type="email" name="correo" id="txtcorreo" class="form-control" onkeyup="mayus(this);" data-toggle="tooltip" data-placement="bottom" placeholder="" autocomplete="off" required>
+                      data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)"
+                      autocomplete="off" maxlength="10" required>
                   </div>
 
                   <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="input-group-prepend">
-                      <label for="txtcursos_disponibles" class="form-control-label text-muted">Cursos Disponibles</label>
+                      <label for="txtcanal_ventas" class="form-control-label text-muted">Regional</label>
                     </div>
-                    <select class="custom-select form-control" name="cursos_disponibles" id="txtcursos_disponibles" autofocus
-                      required>
+                    <select class="custom-select form-control" name="canal_ventas" id="txtcanal_ventas"
+                      autofocus required>
                       <option value="">Elige una opción</option>
-                      <option value="">Hola 1</option>
-                      <option value="">Hola 2</option>
-                      <option value="">Hola 3</option>
+                      <option value="">Tiendas.</option>
+                      <option value="">Kioscos.</option>
+                      <option value="">Inbound.</option>
+                      <option value="">Outbound</option>
+                      <option value="">Cadenas.</option>
+                      <option value="">Call Center.</option>
+                      <option value="">Fuerza de Venta Indirecta.</option>
+                      <option value="">Desplegable</option>
                     </select>
                   </div>
 
                 </div>
                 <div class="form-group mb-0 text-center">
-                  <button type="submit" id="inicio_sesion" class="btn btn-secondary btn-rounded waves-effect waves-light">
+                  <button type="submit" id="inicio_sesion"
+                    class="btn btn-secondary btn-rounded waves-effect waves-light">
                     <span class="btn-label"><i class="fas fa-sign-in-alt"></i></span>Enviar Datos
                   </button>
                 </div>

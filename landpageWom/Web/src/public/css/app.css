@@ -4845,11 +4845,23 @@ button:focus {
   outline-width: 0;
 }
 
+/* .card {
+  border-radius: 40px;
+  border: none;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 55%;
+  
+} */
+
 .card {
   border-radius: 40px;
   border: none;
-  margin-bottom: 10px
-  
+  margin-bottom: 10px;
+  background-color: white;
+  /* width: 57%;
+  margin-left: auto;
+  margin-right: auto; */
 }
 
 .card1 {
@@ -4860,6 +4872,17 @@ button:focus {
 .card2 {
   width: 100%;
   background-image: linear-gradient(to right, #FFD54F, #2F1E4A);
+}
+
+.card3 {
+  border-radius: 40px;
+  border: none;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 57%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 20px 20px 20px;
 }
 
 #logo {

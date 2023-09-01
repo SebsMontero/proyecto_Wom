@@ -50,8 +50,8 @@ passport.use('local.Registro', new LocalStrategy({
         USU_CROL: rol,
         USU_CESTADO: estado,
         USU_CCARGO: cargo,
-        USU_CRESPONSABLE_GESTION: responsable_gestion
     };
+    console.log(newUser)
     newUser.USU_CPASSWORD = await helpers.encryptPassword(password);
     const result = await pool.query('INSERT INTO tbl_rusuarios set ?', [newUser]);
     newUser.id = result.insertId;
