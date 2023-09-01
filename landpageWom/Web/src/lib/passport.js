@@ -4,7 +4,9 @@ const LocalStrategy = require('passport-local').Strategy;
 // const ActiveDirectory = require("activedirectory2").promiseWrapper;
 const pool = require('../database');
 const helpers = require('./helpers');
-const keys = require('../keys');
+const database = require('../keys');
+const DB = database.database;
+
 // var os = require('os');
 
 
@@ -15,7 +17,8 @@ passport.use('local.Login', new LocalStrategy ({
     passReqToCallback: true
 }, async (req, username, password, done) =>{
     // console.log(req.body);
-    const rows = await pool.query('SELECT * FROM tbl_rusuarios WHERE USU_CUSUARIO =?', [username]);
+    const sql = `SELECT * FROM ${DB}.tbl_rusuarios WHERE USU_CUSUARIO =?`;
+    const rows = await pool.query(sql, [username]);
     console.log(rows)
     if (rows.length > 0){ 
         const user = rows[0];
@@ -41,19 +44,18 @@ passport.use('local.Registro', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, username, password, done) => {
-    const { documento, fullname,  rol, estado, cargo, responsable_gestion } = req.body;
+    const { documento, fullname, estado, responsable_gestion } = req.body;
     var newUser = {
         USU_CDOCUMENTO: documento,
         USU_CNOMBRES_APELLIDOS: fullname,
         USU_CUSUARIO: username,
         USU_CPASSWORD: password,
-        USU_CROL: rol,
-        USU_CESTADO: estado,
-        USU_CCARGO: cargo,
+        USU_CESTADO: estado
     };
     console.log(newUser)
     newUser.USU_CPASSWORD = await helpers.encryptPassword(password);
-    const result = await pool.query('INSERT INTO tbl_rusuarios set ?', [newUser]);
+    const sql = `INSERT INTO ${DB}.tbl_rusuarios set ?`;
+    const result = await pool.query(sql, [newUser]);
     newUser.id = result.insertId;
     return done(null, newUser);
 }));
