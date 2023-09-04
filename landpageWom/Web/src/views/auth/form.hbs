@@ -45,7 +45,7 @@
 
                   <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <label class="form-control-label text-muted" for="txtcasott">Caso TT</label>
-                    <input type="text" name="tt" id="txtcasott" class="form-control" data-toggle="tooltip"
+                    <input type="text" name="casott" id="txtcasott" class="form-control" data-toggle="tooltip"
                       data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)"
                       autocomplete="off" maxlength="20" autofocus required>
                   </div>
@@ -63,7 +63,16 @@
                       </select>
                     </div>
 
-                    <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6" id="causalEscalamientoSi"
+                    <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6" id="causalEscalamiento">
+                      <div class="input-group-prepend">
+                        <label class="form-control-label text-muted" for="txttipo_causal">Causal de escalamiento</label>
+                      </div>
+                      <select class="custom-select form-control" name="causal" id="txtpos_venta" autofocus required>
+                        <option value="">Elige una opción</option>
+                      </select>
+                    </div>
+
+{{!--                     <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6" id="causalEscalamientoSi"
                       style="display: none;">
                       <div class="input-group-prepend">
                         <label for="txttipo_causal_antiguo" class="form-control-label text-muted">Causal de
@@ -98,7 +107,7 @@
                         </option>
                         <option value="Laft">Laft</option>
                       </select>
-                    </div>
+                    </div> --}}
                   </body>
 
                   <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">

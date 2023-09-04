@@ -4,7 +4,7 @@ require('./index')
 IPServidor = 'localhost'
 UsuarioServidor = 'root'
 ContrasenaServidor = 'Colombia1+'
-BaseDatosServidor = 'dbp_arq_datos'
+BaseDatosServidor = 'dbp_wom'
 
 module.exports = {
     database: {

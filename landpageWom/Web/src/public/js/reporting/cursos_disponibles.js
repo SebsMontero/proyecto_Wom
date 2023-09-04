@@ -9,24 +9,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     selectEscalamiento.addEventListener("change", function() {
         console.log('Hola Mundo');
-        const txttipo_causal_antiguo = document.getElementById("txttipo_causal_antiguo");
-        const txttipo_causal = document.getElementById("txttipo_causal");
+        const causalEscalamiento = document.getElementById("causalEscalamiento");
+        const causalSelect = causalEscalamiento.querySelector("select");
     
         if (this.value === "SI") {
-            causalEscalamientoSi.style.display = "block";
-            causalEscalamientoNo.style.display = "none";
-            txttipo_causal_antiguo.setAttribute('required', 'required');
-            txttipo_causal.removeAttribute('required');
+            causalSelect.innerHTML = `
+                <option value="">Elige una opción</option>
+                <option value="Caso no ha sido escalado.">Caso no ha sido escalado.</option>
+                <option value="Llamar Nuevamente.">Llamar Nuevamente.</option>
+                <option value="Confirmar Numero de Contacto.">Confirmar Numero de Contacto.</option>
+                <option value="Continua la Restricción en Evidente, TT Aprobado.">Continua la Restricción en Evidente, TT Aprobado.</option>
+                <option value="Continua la Restricción en Laft, TT Aprobado.">Continua la Restricción en Laft,TT Aprobado.</option>
+                <option value="Continua la Restricción por Cupo, TT Aprobado.">Continua la Restricción por Cupo, TT Aprobado.</option>
+            `;
         } else if (this.value === "NO") {
-            causalEscalamientoSi.style.display = "none";
-            causalEscalamientoNo.style.display = "block";
-            txttipo_causal_antiguo.removeAttribute('required');
-            txttipo_causal.setAttribute('required', 'required');
-        } else {
-            causalEscalamientoSi.style.display = "none";
-            causalEscalamientoNo.style.display = "none";
-            txttipo_causal_antiguo.removeAttribute('required');
-            txttipo_causal.removeAttribute('required');
+            causalSelect.innerHTML = `
+                <option value="">Elige una opción</option>
+                <option value="Evidente no aprobado">Evidente no aprobado</option>
+                <option value="Cambio simCard">Cambio simCard</option>
+                <option value="Reposición de simCard desde call center">Reposición de simCard desde call center</option>
+                <option value="Corrección de datos cedula o nombres">Corrección de datos cedula o nombres</option>
+                <option value="Laft">Laft</option>
+            `;
         }
     });
 
@@ -55,25 +59,38 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (this.value === "venta") {
             transaccionSelect.innerHTML = `
                 <option value="">Elige una opción</option>
-                <option value="venta">Venta</option>
-                <option value="portabilidad">Portabilidad</option>
+                <option value="Venta">Venta</option>
+                <option value="Portabilidad">Portabilidad</option>
             `;
         } else if (this.value === "posventa") {
             transaccionSelect.innerHTML = `
                 <option value="">Elige una opción</option>
-                <option value="cambiopropiedad">Cambio de Propiedad</option>
-                <option value="cambiopagador">Cambio de Pagador</option>
-                <option value="cambiosimcard">Cambio de Simcard</option>
-                <option value="terminacion">Terminación</option>
-                <option value="reconexion">Reconexión</option>
-                <option value="cambionumeroposventa">Cambio de Numero</option>
+                <option value="Cambio de Propiedad">Cambio de Propiedad</option>
+                <option value="Cambio de Pagador">Cambio de Pagador</option>
+                <option value="Cambio de Simcard">Cambio de Simcard</option>
+                <option value="Terminación">Terminación</option>
+                <option value="Reconexión">Reconexión</option>
+                <option value="Cambio de Número">Cambio de Número</option>
             `;
         } else if (this.value === "cambionumero") {
             transaccionSelect.innerHTML = `
                 <option value="">Elige una opción</option>
-                <option value="cambioplanupgrade">Cambio de Plan Upgrade</option>
-                <option value="cambioplandowngrade">Cambio de Plan Downgrade</option>
+                <option value="Upgrade">Cambio de Plan Upgrade</option>
+                <option value="Downgrade">Cambio de Plan Downgrade</option>
             `;
         }
     });
+
+    function validarCasoTT() {
+        const casottInput = document.getElementById("txtcasott");
+        const casottValue = casottInput.value;
+        
+        const regex = /^(20\d{2})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])_000(\d{8})$/;
+
+        if (!regex.test(casottValue)) {
+            alert("El valor de Caso TT no cumple con las características requeridas.");
+        }
+    }
+
+    document.getElementById("txtcasott").addEventListener("blur", validarCasoTT);
 });
