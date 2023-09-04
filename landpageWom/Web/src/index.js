@@ -86,7 +86,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Starting server.........................
 app.listen(app.get('port'), () => {
-    console.log('►--<-<-< ◄◄◄ Welcome Roger Rodriguez ►►► >->->--◄');
+    console.log('►--<-<-< ◄◄◄ Welcome María José & Sebastian ►►► >->->--◄');
     console.log('-<-<-< ◄◄◄ Server running on port', app.get('port'),'►►► >->->-');
 });
 
