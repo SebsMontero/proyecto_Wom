@@ -46,8 +46,8 @@
                   <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <label class="form-control-label text-muted" for="txtcasott">Caso TT</label>
                     <input type="text" name="casott" id="txtcasott" class="form-control" data-toggle="tooltip"
-                      data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)"
-                      autocomplete="off" maxlength="20" autofocus required>
+                      data-placement="bottom" placeholder="" autocomplete="off" maxlength="20" autofocus required> 
+                      <div id="casottWarning" class="text-danger"></div>
                   </div>
 
                   <body>
@@ -72,42 +72,17 @@
                       </select>
                     </div>
 
-{{!--                     <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6" id="causalEscalamientoSi"
-                      style="display: none;">
+                    <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
                       <div class="input-group-prepend">
-                        <label for="txttipo_causal_antiguo" class="form-control-label text-muted">Causal de
-                          escalamiento</label>
+                        <label for="txtsegmento" class="form-control-label text-muted">Segmento</label>
                       </div>
-                      <select class="custom-select form-control" name="tipo_causal_antiguo" id="txttipo_causal_antiguo">
+                      <select class="custom-select form-control" name="segmento" id="txtsegmento" required>
                         <option value="">Elige una opción</option>
-                        <option value="Caso no ha sido escalado.">Caso no ha sido escalado.</option>
-                        <option value="Llamar Nuevamente.">Llamar Nuevamente.</option>
-                        <option value="Confirmar Numero de Contacto.">Confirmar Numero de Contacto.</option>
-                        <option value="Continua la Restricción en Evidente, TT Aprobado.">Continua la Restricción en
-                          Evidente, TT Aprobado.</option>
-                        <option value="Continua la Restricción en Laft, TT Aprobado.">Continua la Restricción en Laft,
-                          TT Aprobado.</option>
-                        <option value="Continua la Restricción por Cupo, TT Aprobado.">Continua la Restricción por Cupo,
-                          TT Aprobado.</option>
+                        <option value="B2B">B2B</option>
+                        <option value="B2B">B2C</option>
                       </select>
                     </div>
 
-                    <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6" id="causalEscalamientoNo"
-                      style="display: none;">
-                      <div class="input-group-prepend">
-                        <label for="txttipo_causal" class="form-control-label text-muted">Causal de escalamiento</label>
-                      </div>
-                      <select class="custom-select form-control" name="tipo_causal" id="txttipo_causal">
-                        <option value="">Elige una opción</option>
-                        <option value="EVIDENTE NO APROBADO">Evidente no aprobado</option>
-                        <option value="CAMBIO SIMCARD">Cambio simCard</option>
-                        <option value="Reposición de simCard desde call center">Reposición de simCard desde call center
-                        </option>
-                        <option value="Corrección de datos cedula o nombres">Corrección de datos cedula o nombres
-                        </option>
-                        <option value="Laft">Laft</option>
-                      </select>
-                    </div> --}}
                   </body>
 
                   <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -116,12 +91,12 @@
                     </div>
                     <select class="custom-select form-control" name="regional" id="txtregional" autofocus required>
                       <option value="">Elige una opción</option>
-                      <option value="">Regional Antioquia</option>
-                      <option value="">Regional Centro.</option>
-                      <option value="">Regional Costa.</option>
-                      <option value="">Regional Eje Cafetero.</option>
-                      <option value="">Regional Occidente.</option>
-                      <option value="">Regional Oriente.</option>
+                      <option value="Antioquia">Regional Antioquia</option>
+                      <option value="Centro">Regional Centro.</option>
+                      <option value="Costa">Regional Costa.</option>
+                      <option value="Eje Cafetero">Regional Eje Cafetero.</option>
+                      <option value="Occidente">Regional Occidente.</option>
+                      <option value="Oriente">Regional Oriente.</option>
                     </select>
                   </div>
 
@@ -162,19 +137,19 @@
 
                   <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="input-group-prepend">
-                      <label for="txtcanal_ventas" class="form-control-label text-muted">Regional</label>
+                      <label for="txtcanal_ventas" class="form-control-label text-muted">Canal de ventas</label>
                     </div>
-                    <select class="custom-select form-control" name="canal_ventas" id="txtcanal_ventas"
-                      autofocus required>
+                    <select class="custom-select form-control" name="canal_ventas" id="txtcanal_ventas" autofocus
+                      required>
                       <option value="">Elige una opción</option>
-                      <option value="">Tiendas.</option>
-                      <option value="">Kioscos.</option>
-                      <option value="">Inbound.</option>
-                      <option value="">Outbound</option>
-                      <option value="">Cadenas.</option>
-                      <option value="">Call Center.</option>
-                      <option value="">Fuerza de Venta Indirecta.</option>
-                      <option value="">Desplegable</option>
+                      <option value="Tiendas">Tiendas.</option>
+                      <option value="Kioscos">Kioscos.</option>
+                      <option value="Inbound">Inbound.</option>
+                      <option value="Outbound">Outbound</option>
+                      <option value="Cadenas">Cadenas.</option>
+                      <option value="Call Center">Call Center.</option>
+                      <option value="Fuerza de Venta Indirecta">Fuerza de Venta Indirecta.</option>
+                      <option value="Desplegable">Desplegable</option>
                     </select>
                   </div>
 

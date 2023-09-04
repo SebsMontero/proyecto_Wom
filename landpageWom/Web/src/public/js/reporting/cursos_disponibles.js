@@ -84,11 +84,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     function validarCasoTT() {
         const casottInput = document.getElementById("txtcasott");
         const casottValue = casottInput.value;
-        
+        const casottWarning = document.getElementById("casottWarning");
         const regex = /^(20\d{2})(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])_000(\d{8})$/;
 
         if (!regex.test(casottValue)) {
-            alert("El valor de Caso TT no cumple con las características requeridas.");
+            casottInput.classList.add("is-invalid"); // Cambiar estilo del campo
+            casottWarning.textContent = "El valor de Caso TT no cumple con las características requeridas.";
+        } else {
+            casottInput.classList.remove("is-invalid"); // Restaurar estilo del campo si es válido
+            casottWarning.textContent = "";
         }
     }
 

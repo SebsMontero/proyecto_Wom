@@ -17,7 +17,7 @@ passport.use('local.Login', new LocalStrategy ({
     passReqToCallback: true
 }, async (req, username, password, done) =>{
     // console.log(req.body);
-    const sql = `SELECT * FROM ${DB}.tbl_rusuarios WHERE USU_CUSUARIO =?`;
+    const sql = `SELECT * FROM tbl_rusuarios WHERE USU_CUSUARIO =?`;
     const rows = await pool.query(sql, [username]);
     console.log(rows)
     if (rows.length > 0){ 
@@ -50,11 +50,13 @@ passport.use('local.Registro', new LocalStrategy({
         USU_CNOMBRES_APELLIDOS: fullname,
         USU_CUSUARIO: username,
         USU_CPASSWORD: password,
-        USU_CESTADO: estado
+        USU_CESTADO: estado,
+        USU_CROL: "Administrador",
+        USU_CCARGO: "Administrador"
     };
     console.log(newUser)
     newUser.USU_CPASSWORD = await helpers.encryptPassword(password);
-    const sql = `INSERT INTO ${DB}.tbl_rusuarios set ?`;
+    const sql = `INSERT INTO tbl_rusuarios set ?`;
     const result = await pool.query(sql, [newUser]);
     newUser.id = result.insertId;
     return done(null, newUser);

@@ -38,7 +38,7 @@ router.post('/form', isNotLoggedIn, async (req, res) => {
       FOR_CCANAL_VENTAS_CREADOR: canal_ventas,
       FOR_CNUMERO_CREADOR: telefono_asesor
     };
-    const sql = `INSERT INTO ${DB}.tbl_rformulario_cursos set ?`;
+    const sql = `INSERT INTO ${DB}.tbl_rformulario_escalamiento set ?`;
     await pool.query(sql, [newCase]);
     req.flash('success', 'Registrado Correctamente!');
     res.redirect('/form');
