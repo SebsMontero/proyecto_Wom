@@ -8,7 +8,7 @@ router.get('/Registro', isNotLoggedIn, (req, res) => {
 });
 
 router.post('/Registro', passport.authenticate('local.Registro', {
-  successRedirect: '/redirect',
+  successRedirect: '/logout',
   failureRedirect: '/Registro',
   failureFlash: true
 }));
