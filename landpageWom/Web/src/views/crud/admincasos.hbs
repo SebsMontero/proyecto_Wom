@@ -33,9 +33,6 @@
                                             <center>CASO TT</center>
                                         </th>
                                         <th>
-                                            <center>EDITAR CASO</center>
-                                        </th>
-                                        <th>
                                             <center>FECHA ESCALAMIENTO</center>
                                         </th>
                                         <th>
@@ -72,91 +69,6 @@
                                     {{#each casos}}
                                     <tr>
                                         <td>{{FOR_CCASO_TT}}</td>
-                                        <td>
-                                            {{!-- Modal Crud Actualizar Casos--}}
-                                            <center><a><button type="button"
-                                                        class="btn btn-secondary waves-effect waves-light"
-                                                        data-toggle="modal"
-                                                        data-target="#crud_AdminUsuarios_actualizar_{{PKFOR_NCODIGO}}"><i
-                                                            class="fas fa-edit"></i></button></a></center>
-                                            {{!-- Modal Crud Actualizar Casos--}}
-                                            <div class="modal fade" id="crud_AdminUsuarios_actualizar_{{PKFOR_NCODIGO}}"
-                                                tabindex="-1" role="dialog"
-                                                aria-labelledby="crud_AdminUsuarios_actualizarTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg modal-dialog-scrollable"
-                                                    role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title"
-                                                                id="crud_AdminUsuarios_actualizarTitle"><i
-                                                                    class="fas fa-edit"></i> Actualizar Caso</h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form action="/admincasos/{{PKFOR_NCODIGO}}"
-                                                                method="POST">
-                                                                <div class="form-row">
-
-                                                                    <div
-                                                                        class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12 d-none menuAdministrador menuGestor">
-                                                                        <label for="txtobservaciones"
-                                                                            class="col-form-label">Segmento</label>
-                                                                        <input type="text" name="observaciones"
-                                                                            id="txtobservaciones" class="form-control"
-                                                                            data-toggle="tooltip"
-                                                                            data-placement="bottom"
-                                                                            value="{{FOR_CSEGMENTO}}"
-                                                                            autocomplete="off">
-                                                                    </div>
-                                                                    <div
-                                                                        class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6 d-none menuAdministrador">
-                                                                        <div class="input-group-prepend">
-                                                                            <label for="txtgestor"
-                                                                                class="col-form-label">Gestores
-                                                                                Disponibles</label>
-                                                                        </div>
-                                                                        <select class="custom-select form-control"
-                                                                            name="gestor"
-                                                                            id="txtgestor_{{PKFOR_NCODIGO}}" 
-                                                                            onclick="cargarGesrotes({{PKFOR_NCODIGO}})"
-                                                                            required>
-                                                                            <option value="">Elige una opción</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div
-                                                                        class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6 d-none menuAdministrador menuGestor">
-                                                                        <label for="txtestado_estudiante"
-                                                                            class="col-form-label">Estado</label>
-                                                                        <input type="text" name="estado_estudiante"
-                                                                            id="txtestado_estudiante"
-                                                                            list="crud_Estado_Estudiante"
-                                                                            class="form-control" data-toggle="tooltip"
-                                                                            data-placement="bottom"
-                                                                            value="{{FOR_CESTADO}}" autocomplete="off">
-                                                                    </div>
-                                                                </div>
-                                                                <center>
-                                                                    <button type="submit" name="action"
-                                                                        class="btn btn-secondary btn-rounded waves-effect waves-light">
-                                                                        <span class="btn-label"><i
-                                                                                class="fas fa-database"></i></span>
-                                                                        Actualizar Caso
-                                                                    </button>
-                                                                </center>
-                                                            </form>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">Cerrar</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            {{!-- Fin Modal Crud Actualizar Estudiantes--}}
-                                        </td>
                                         <td>{{FOR_CFECHA_REGISTRO}}</td>
                                         <td>{{FOR_CCASUAL_ESCALAMIENTO}}</td>
                                         <td>{{FOR_CSEGMENTO}}</td>

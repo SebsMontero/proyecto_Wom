@@ -107,7 +107,7 @@
                       <option value="">Elige una opción</option>
                       <option value="Venta">Venta</option>
                       <option value="Posventa">Pos venta</option>
-                      <option value="Cambio de número">Cambio de número</option>
+                      <option value="Cambio de numero">Cambio de número</option>
                     </select>
                   </div>
 
@@ -131,6 +131,13 @@
                   <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <label class="form-control-label text-muted" for="txttelefono">Telefono Asesor</label>
                     <input type="tel" name="telefono_asesor" id="txttelefono" class="form-control" data-toggle="tooltip"
+                      data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)"
+                      autocomplete="off" maxlength="10" required>
+                  </div>
+
+                  <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                    <label class="form-control-label text-muted" for="txtcodigo">Código EKIA</label>
+                    <input type="tel" name="codigo" id="txtcodigo" class="form-control" data-toggle="tooltip"
                       data-placement="bottom" placeholder="" onkeypress="return numerosContacto(event)"
                       autocomplete="off" maxlength="10" required>
                   </div>

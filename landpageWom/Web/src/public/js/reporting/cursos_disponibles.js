@@ -4,11 +4,8 @@
 
 document.addEventListener("DOMContentLoaded", async () => {
     const selectEscalamiento = document.getElementById("txtescalamiento");
-    const causalEscalamientoSi = document.getElementById("causalEscalamientoSi");
-    const causalEscalamientoNo = document.getElementById("causalEscalamientoNo");
 
     selectEscalamiento.addEventListener("change", function() {
-        console.log('Hola Mundo');
         const causalEscalamiento = document.getElementById("causalEscalamiento");
         const causalSelect = causalEscalamiento.querySelector("select");
     
@@ -56,13 +53,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         transaccionSelect.innerHTML = "";
 
-        if (this.value === "venta") {
+        if (this.value === "Venta") {
             transaccionSelect.innerHTML = `
                 <option value="">Elige una opción</option>
                 <option value="Venta">Venta</option>
                 <option value="Portabilidad">Portabilidad</option>
             `;
-        } else if (this.value === "posventa") {
+        } else if (this.value === "Posventa") {
             transaccionSelect.innerHTML = `
                 <option value="">Elige una opción</option>
                 <option value="Cambio de Propiedad">Cambio de Propiedad</option>
@@ -72,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <option value="Reconexión">Reconexión</option>
                 <option value="Cambio de Número">Cambio de Número</option>
             `;
-        } else if (this.value === "cambionumero") {
+        } else if (this.value === "Cambio de numero") {
             transaccionSelect.innerHTML = `
                 <option value="">Elige una opción</option>
                 <option value="Upgrade">Cambio de Plan Upgrade</option>

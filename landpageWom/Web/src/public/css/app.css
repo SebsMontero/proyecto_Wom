@@ -283,7 +283,7 @@ label {
 
 /* ------------Modificar ancho contenido----------- */
 .content-page {
-  margin-left: 240px;
+  margin-left: 150px;
   overflow: hidden;
   padding: 0 15px 5px 15px;
   min-height: 80vh;
@@ -300,10 +300,10 @@ label {
 /* ------------ Termina modificar ancho Inicio / Login----------- */
 
 .left-side-menu {
-  width: 140px;
+  width: 150px;
   background: #ffffff;
   bottom: 0;
-  padding: 20px 0;
+  padding: 10px 0;
   position: fixed;
   top: 70px;
   -webkit-box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.3);
@@ -521,6 +521,7 @@ label {
 /* Responsive footer margen general 70px*/
 .enlarged .footer {
   left: 0 !important;
+  z-index: 9999;
 }
 /* Fin Responsive footer margen general 70px*/
 
@@ -718,8 +719,8 @@ body.enlarged {
 }
 
 .logo-box {
-  height: 70px;
-  width: 240px;
+  height: 40px;
+  width: 140px;
   float: left;
   background-color: #ffffff;
 }
@@ -736,6 +737,7 @@ body.enlarged {
   box-shadow: 0 0 35px 0 rgba(61, 69, 78, 0.15);
   /* Search */
 }
+
 .navbar-custom .topnav-menu > li {
   float: left;
 }
@@ -798,6 +800,7 @@ body.enlarged {
   background-color: transparent;
   font-size: 24px;
   cursor: pointer;
+  padding: 5px 5px;
 }
 .navbar-custom .button-menu-mobile span {
   width: 18px;
@@ -891,7 +894,7 @@ body.enlarged {
 }
 
 .nav-user {
-  padding: 0 12px !important;
+  padding: 0 25px !important;
 }
 .nav-user img {
   height: 32px;
@@ -1040,6 +1043,7 @@ body.enlarged {
   left: 0px;
   /* ------------- termina cambio ancho footer------------- */
   background-color: #2F1E4A;
+  
 }
 .footer .footer-links a {
   color: #98a6ad;
@@ -4851,17 +4855,12 @@ button:focus {
   margin-bottom: 10px;
   background-color: white;
   width: 55%;
-  
 } */
 
 .card {
-  border-radius: 40px;
+  border-radius: 0px;
   border: none;
-  margin-bottom: 10px;
-  background-color: white;
-  /* width: 57%;
-  margin-left: auto;
-  margin-right: auto; */
+  margin-bottom: 10px
 }
 
 .card1 {
