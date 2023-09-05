@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (!regex.test(casottValue)) {
             casottInput.classList.add("is-invalid"); // Cambiar estilo del campo
-            casottWarning.textContent = "El valor de Caso TT no cumple con las características requeridas.";
+            casottWarning.textContent = "El valor de Caso TT no cumple con las características requeridas (AAAAMMDD_000XXXXXXXX).";
         } else {
             casottInput.classList.remove("is-invalid"); // Restaurar estilo del campo si es válido
             casottWarning.textContent = "";

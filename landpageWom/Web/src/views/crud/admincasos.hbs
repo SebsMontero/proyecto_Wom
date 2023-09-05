@@ -33,6 +33,9 @@
                                             <center>CASO TT</center>
                                         </th>
                                         <th>
+                                            <center>EDITAR CASO</center>
+                                        </th>
+                                        <th>
                                             <center>FECHA ESCALAMIENTO</center>
                                         </th>
                                         <th>
@@ -51,8 +54,9 @@
                                             <center>TRANSACCIÓN</center>
                                         </th>
                                         <th>
-                                            <center>CÓDIGO CREADOR</center>
+                                            <center>NOMBRE CREADOR</center>
                                         </th>
+                                        
                                         <th>
                                             <center>CANAL DE VENTA CREADOR</center>
                                         </th>
@@ -65,17 +69,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{#each users}}
+                                    {{#each casos}}
                                     <tr>
-                                        <td>{{PKFOR_NCODIGO}}</td>
+                                        <td>{{FOR_CCASO_TT}}</td>
                                         <td>
-                                            {{!-- Modal Crud Actualizar Estudiantes--}}
+                                            {{!-- Modal Crud Actualizar Casos--}}
                                             <center><a><button type="button"
                                                         class="btn btn-secondary waves-effect waves-light"
                                                         data-toggle="modal"
                                                         data-target="#crud_AdminUsuarios_actualizar_{{PKFOR_NCODIGO}}"><i
                                                             class="fas fa-edit"></i></button></a></center>
-                                            {{!-- Modal Crud Actualizar Estudiantes--}}
+                                            {{!-- Modal Crud Actualizar Casos--}}
                                             <div class="modal fade" id="crud_AdminUsuarios_actualizar_{{PKFOR_NCODIGO}}"
                                                 tabindex="-1" role="dialog"
                                                 aria-labelledby="crud_AdminUsuarios_actualizarTitle" aria-hidden="true">
@@ -85,7 +89,7 @@
                                                         <div class="modal-header">
                                                             <h5 class="modal-title"
                                                                 id="crud_AdminUsuarios_actualizarTitle"><i
-                                                                    class="fas fa-edit"></i> Actualizar Estudiante</h5>
+                                                                    class="fas fa-edit"></i> Actualizar Caso</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -99,12 +103,12 @@
                                                                     <div
                                                                         class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12 d-none menuAdministrador menuGestor">
                                                                         <label for="txtobservaciones"
-                                                                            class="col-form-label">Observaciones</label>
+                                                                            class="col-form-label">Segmento</label>
                                                                         <input type="text" name="observaciones"
                                                                             id="txtobservaciones" class="form-control"
                                                                             data-toggle="tooltip"
                                                                             data-placement="bottom"
-                                                                            value="{{FOR_COBSERVACIONES}}"
+                                                                            value="{{FOR_CSEGMENTO}}"
                                                                             autocomplete="off">
                                                                     </div>
                                                                     <div
@@ -139,7 +143,7 @@
                                                                         class="btn btn-secondary btn-rounded waves-effect waves-light">
                                                                         <span class="btn-label"><i
                                                                                 class="fas fa-database"></i></span>
-                                                                        Actualizar Estudiante
+                                                                        Actualizar Caso
                                                                     </button>
                                                                 </center>
                                                             </form>
@@ -153,17 +157,15 @@
                                             </div>
                                             {{!-- Fin Modal Crud Actualizar Estudiantes--}}
                                         </td>
-                                        <td>{{FOR_CTIPO_DOCUMENTO}}</td>
-                                        <td>{{FOR_CNUMERO_DOCUMENTO}}</td>
-                                        <td>{{FOR_CNOMBRES}}</td>
-                                        <td>{{FOR_CAPELLIDOS}}</td>
-                                        <td>{{FOR_CTELEFONO}}</td>
-                                        <td>{{FOR_CCORREO_ELECTRONICO}}</td>
-                                        <td>{{FOR_CCURSO_INTERES}}</td>
-                                        <td>{{FOR_CGESTOR_ASIGNADO}}</td>
-                                        <td>{{FOR_COBSERVACIONES}}</td>
-                                        <td>{{FOR_CESTADO}}</td>
                                         <td>{{FOR_CFECHA_REGISTRO}}</td>
+                                        <td>{{FOR_CCASUAL_ESCALAMIENTO}}</td>
+                                        <td>{{FOR_CSEGMENTO}}</td>
+                                        <td>{{FOR_CREGIONAL}}</td>
+                                        <td>{{FOR_CTIPO_TRANSACCION}}</td>
+                                        <td>{{FOR_CTRANSACCION}}</td>
+                                        <td>{{FOR_CNOMBRE_CREADOR}}</td>
+                                        <td>{{FOR_CCANAL_VENTAS_CREADOR}}</td>
+                                        <td>{{FOR_CNUMERO_CREADOR}}</td>
                                         <td>{{FOR_CFECHA_MODIFICACION}}</td>
                                     </tr>
                                     {{/each}}
