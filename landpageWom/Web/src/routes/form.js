@@ -16,16 +16,6 @@ router.post('/form', isNotLoggedIn, async (req, res) => {
   try {
     const { casott, causal, segmento, regional, tipo_transaccion, transaccion, asesor, canal_ventas, telefono_asesor} = req.body;
     console.log(req.body);
-    /* const consulta = "SELECT * FROM ${DB}.tbl_rformulario_cursos WHERE FOR_CCASO_TT = '" + tipo_documento + "';"
-    console.log(consulta);
-    const result = await pool.query(consulta);
-    console.log(result)
-    if (result.length > 0) {
-      console.log('Ya registrado')
-      messagge = 'Ya te encuentras registrado en el curso de: ' + result[0].FOR_CCURSO_INTERES
-      req.flash('message', messagge);
-      res.redirect('/form');
-    } else { */
     console.log('Registrando')
     const newCase = {
       FOR_CCASO_TT: casott,
@@ -38,7 +28,7 @@ router.post('/form', isNotLoggedIn, async (req, res) => {
       FOR_CCANAL_VENTAS_CREADOR: canal_ventas,
       FOR_CNUMERO_CREADOR: telefono_asesor
     };
-    const sql = `INSERT INTO ${DB}.tbl_rformulario_escalamiento set ?`;
+    const sql = `INSERT INTO tbl_rformulario_escalamiento set ?`;
     await pool.query(sql, [newCase]);
     req.flash('success', 'Registrado Correctamente!');
     res.redirect('/form');
@@ -55,10 +45,12 @@ router.post('/form', isNotLoggedIn, async (req, res) => {
 /* Casos TT */
 router.get('/admincasos', isLoggedIn, async (req, res) => {
   try {
-    const sql = `SELECT * FROM ${DB}.tbl_rformulario_escalamiento`;
-    const users = await pool.query(sql);
-    res.render('crud/admincasos', { users });
+    const sql = `SELECT * FROM tbl_rformulario_escalamiento`;
+    const casos = await pool.query(sql);
+    res.render('crud/admincasos', { casos });
+    console.log("ENTRO");
   } catch (error) {
+    console.log("CATCH");
     res.render('401');
   }
 });

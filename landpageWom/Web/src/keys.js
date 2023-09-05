@@ -3,7 +3,7 @@ require('./index')
 //Variables Database Local
 IPServidor = 'localhost'
 UsuarioServidor = 'root'
-ContrasenaServidor = 'Colombia1+'
+ContrasenaServidor = 'cos1234'
 BaseDatosServidor = 'dbp_wom'
 
 module.exports = {

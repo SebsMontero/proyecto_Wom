@@ -11,7 +11,7 @@ const DB = database.database;
 router.get('/adminusuarios', isLoggedIn, async (req, res) => {
     try {
         if (req.user.USU_CROL == "Administrador") {
-            const sql = `SELECT * FROM ${DB}tbl_rusuarios`;
+            const sql = `SELECT * FROM tbl_rusuarios`;
             const users = await pool.query(sql);
             res.render('crud/adminusuarios', {users});
         }  else {
@@ -35,7 +35,7 @@ router.post('/adminusuarios', isLoggedIn, async (req, res) => {
         USU_CRESPONSABLE_GESTION: responsable_gestion
     };
     newUser.USU_CPASSWORD = await helpers.encryptPassword(password);
-    const sql = `INSERT INTO ${DB}.tbl_rusuarios set ?`;
+    const sql = `INSERT INTO tbl_rusuarios set ?`;
     await pool.query(sql, [newUser]);
     req.flash('success', 'Usuario Registrado Correctamente!!!');
     res.redirect('/adminusuarios');
@@ -59,7 +59,7 @@ router.post('/adminusuarios/:id', isLoggedIn, async (req, res) => {
         USU_CRESPONSABLE_GESTION: responsable_gestion
     };
     newUser.USU_CPASSWORD = await helpers.encryptPassword(password);
-    const sql = `UPDATE ${DB}.tbl_rusuarios set ? WHERE PKUSU_NCODIGO = ?`;
+    const sql = `UPDATE tbl_rusuarios set ? WHERE PKUSU_NCODIGO = ?`;
     await pool.query(sql, [newUser,[id]]);
     req.flash('success', 'Usuario Actualizado Correctamente!!!');
     res.redirect('/adminusuarios');

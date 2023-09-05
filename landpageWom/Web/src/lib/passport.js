@@ -44,15 +44,16 @@ passport.use('local.Registro', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, username, password, done) => {
-    const { documento, fullname, estado, responsable_gestion } = req.body;
+    const { documento, fullname, estado, rol, responsable_gestion } = req.body;
     var newUser = {
         USU_CDOCUMENTO: documento,
         USU_CNOMBRES_APELLIDOS: fullname,
         USU_CUSUARIO: username,
         USU_CPASSWORD: password,
         USU_CESTADO: estado,
-        USU_CROL: "Administrador",
-        USU_CCARGO: "Administrador"
+        USU_CROL: rol,
+        USU_CCARGO: rol,
+        USU_CRESPONSABLE_GESTION: responsable_gestion
     };
     console.log(newUser)
     newUser.USU_CPASSWORD = await helpers.encryptPassword(password);
