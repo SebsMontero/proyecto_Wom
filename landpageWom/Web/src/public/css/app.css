@@ -193,7 +193,7 @@ label {
 }
 .form-control::placeholder {
   color: #d2d6da;
-  opacity: 1;
+  opacity: 30;
 }
 
 .form-control-1 {
@@ -4894,7 +4894,7 @@ button:focus {
 }
 
 ::placeholder {
-  color: #000 !important;
+  color: #999 !important;
   opacity: 1;
 }
 

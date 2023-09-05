@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
+    
     function validarCasoTT() {
         const casottInput = document.getElementById("txtcasott");
         const casottValue = casottInput.value;
@@ -87,11 +88,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!regex.test(casottValue)) {
             casottInput.classList.add("is-invalid"); // Cambiar estilo del campo
             casottWarning.textContent = "El valor de Caso TT no cumple con las características requeridas (AAAAMMDD_000XXXXXXXX).";
+            return false;
         } else {
             casottInput.classList.remove("is-invalid"); // Restaurar estilo del campo si es válido
             casottWarning.textContent = "";
+            return true;
         }
     }
 
     document.getElementById("txtcasott").addEventListener("blur", validarCasoTT);
+    document.getElementById("formulario_escalamiento").addEventListener("submit", function(event) {
+        if (!validarCasoTT()) {
+            event.preventDefault(); // Evita que el formulario se envíe si la validación no se cumple
+        }
+    });
 });

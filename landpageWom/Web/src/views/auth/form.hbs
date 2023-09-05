@@ -40,14 +40,14 @@
                 <h1>LANDING PAGE WOM</h1>
               </center>
 
-              <form action="/form" method="POST">
+              <form action="/form" method="POST" id="formulario_escalamiento">
                 <div class="form-row">
 
                   <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <label class="form-control-label text-muted" for="txtcasott">Caso TT</label>
                     <input type="text" name="casott" id="txtcasott" class="form-control" data-toggle="tooltip"
-                      data-placement="bottom" placeholder="" autocomplete="off" maxlength="20" autofocus required> 
-                      <div id="casottWarning" class="text-danger"></div>
+                      data-placement="bottom" placeholder="" autocomplete="off" maxlength="20" autofocus required>
+                    <div id="casottWarning" class="text-danger"></div>
                   </div>
 
                   <body>
@@ -124,7 +124,8 @@
                     <label class="form-control-label text-muted" for="txtnombres">
                       Nombre Asesor</label>
                     <input type="text" name="asesor" id="txtnombres" class="form-control" data-toggle="tooltip"
-                      data-placement="bottom" placeholder="" onkeyup="mayus(this);" autocomplete="off" maxlength="100"
+                      data-placement="bottom" placeholder="Ej: Daniel Dominguez" onkeyup="mayus(this);" autocomplete="off" maxlength="100"
+                      title="Ingrese unicamente el primer nombre y apellido del creador separados por un espacio."
                       required>
                   </div>
 

@@ -1,7 +1,7 @@
 "use stric";
 document.addEventListener("DOMContentLoaded", () => {
 
-  var ESTUDIANTES = $("#Reporte_Admin_Estudiantes").DataTable({
+  var ESTUDIANTES = $("#Reporte_Admin_Casos").DataTable({
     iDisplayLength: 5,
     aLengthMenu: [
       [3, 5, 10, 25, 50, -1],
@@ -19,19 +19,19 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         extend: 'copy',
         exportOptions: {
-          columns: [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+          columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         }
       },
       {
         extend: 'excel',
         exportOptions: {
-          columns: [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+          columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         }
       },
       {
         extend: 'csv',
         exportOptions: {
-          columns: [0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+          columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
         }
       },
     ],
