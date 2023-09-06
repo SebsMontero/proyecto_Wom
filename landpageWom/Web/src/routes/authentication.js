@@ -3,9 +3,9 @@ const router = express.Router();
 const passport = require('passport');
 const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
 
-router.get('/Registro', isNotLoggedIn, (req, res) => {
-  res.render('auth/Registro');
-});
+// router.get('/Registro', isNotLoggedIn, (req, res) => {
+//   res.render('auth/Registro');
+// });
 
 router.post('/Registro', passport.authenticate('local.Registro', {
   successRedirect: '/logout',
