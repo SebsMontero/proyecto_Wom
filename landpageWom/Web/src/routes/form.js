@@ -14,7 +14,7 @@ router.get('/form', isNotLoggedIn, (req, res, next) => {
 
 router.post('/form', isNotLoggedIn, async (req, res) => {
   try {
-    const { casott, causal, segmento, regional, tipo_transaccion, transaccion, asesor, canal_ventas, telefono_asesor} = req.body;
+    const { casott, causal, segmento, regional, tipo_transaccion, transaccion, asesor, canal_ventas, telefono_asesor, codigo} = req.body;
     console.log(req.body);
     console.log('Registrando')
     const newCase = {
@@ -26,7 +26,8 @@ router.post('/form', isNotLoggedIn, async (req, res) => {
       FOR_CTRANSACCION: transaccion,
       FOR_CNOMBRE_CREADOR: asesor,
       FOR_CCANAL_VENTAS_CREADOR: canal_ventas,
-      FOR_CNUMERO_CREADOR: telefono_asesor
+      FOR_CNUMERO_CREADOR: telefono_asesor,
+      FOR_CCODIGO_CREADOR: codigo
     };
     const sqlCaso = `SELECT * FROM tbl_rformulario_escalamiento WHERE FOR_CCASO_TT = ?`;
     const[rows] = await pool.query(sqlCaso, casott);
@@ -66,7 +67,7 @@ router.post('/form', isNotLoggedIn, async (req, res) => {
       res.redirect('/form');
     }
   } catch {
-    req.flash('message', 'Ups! hubo un error en el registro del caso');
+    req.flash('message', '¡Ups! hubo un error en el registro del caso');
     res.redirect('/form');
   }
 })
