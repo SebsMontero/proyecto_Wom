@@ -83,6 +83,14 @@ router.get('/adminmensajes', isLoggedIn, async (req, res) => {
     }
 });
 
+router.get('/gestionBot', isLoggedIn, async (req, res) => {
+    try {
+            res.render('crud/gestionBot');
+    } catch (error) {
+        res.render('401');
+    }
+});
+
 /* Registro Cursos */
 /* router.post('/admincursos', isLoggedIn, async (req, res) => {
     const { cargo, responsable_gestion, nombre_curso, estado_curso } = req.body;

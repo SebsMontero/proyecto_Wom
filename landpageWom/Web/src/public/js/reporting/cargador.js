@@ -268,7 +268,7 @@ btnRegistrarEXC.addEventListener("click", async () => {
   } else {
     document.getElementById("containerLoader").classList.add("hidden");
     let mensaje = "Hay procesos en ejecución, espere que terminen los procesos actuales o valide con RPA.";
-    alert('error', "!En ejecución!", mensaje);
+    alert('error', "¡En ejecución!", mensaje);
     document.getElementById("btnRegistrarEXC").disabled = false;
     document.getElementById("btnRegistrarEXC").classList.remove("hidden");
   }
