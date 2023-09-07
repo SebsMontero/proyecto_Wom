@@ -28,11 +28,43 @@ router.post('/form', isNotLoggedIn, async (req, res) => {
       FOR_CCANAL_VENTAS_CREADOR: canal_ventas,
       FOR_CNUMERO_CREADOR: telefono_asesor
     };
-    const sql = `INSERT INTO tbl_rformulario_escalamiento set ?`;
-    await pool.query(sql, [newCase]);
-    req.flash('success', 'Registrado Correctamente!');
-    res.redirect('/form');
-    
+    const sqlCaso = `SELECT * FROM tbl_rformulario_escalamiento WHERE FOR_CCASO_TT = ?`;
+    const[rows] = await pool.query(sqlCaso, casott);
+
+    if(rows > 0){
+      //Ya existe el caso
+      const sql = `INSERT INTO tbl_rformulario_escalamiento set ?`;
+      await pool.query(sql, [newCase]);
+      const newForm = {
+        CON_CCASUAL_ESCALAMIENTO: causal,
+        CON_CNOMBRE_CREADOR: asesor,
+        CON_CCANAL_VENTAS_CREADOR: canal_ventas,
+        CON_CNUMERO_CREADOR: telefono_asesor
+      };
+      const sqlConsolidado = `UPDATE tbl_rconsolidado set ? WHERE CON_CCASO_TT = ?`;
+      await pool.query(sqlConsolidado, [newForm]);
+      req.flash('success', 'Registrado Correctamente!');
+      res.redirect('/form');
+    } else{
+      //Nuevo caso
+      const sql = `INSERT INTO tbl_rformulario_escalamiento set ?`;
+      await pool.query(sql, [newCase]);
+      const newForm = {
+        CON_CCASO_TT: casott,
+        CON_CCASUAL_ESCALAMIENTO: causal,
+        CON_CSEGMENTO: segmento,
+        CON_CREGIONAL: regional,
+        CON_CTIPO_TRANSACCION: tipo_transaccion,
+        CON_CTRANSACCION: transaccion,
+        CON_CNOMBRE_CREADOR: asesor,
+        CON_CCANAL_VENTAS_CREADOR: canal_ventas,
+        CON_CNUMERO_CREADOR: telefono_asesor
+      };
+      const sqlConsolidado = `INSERT INTO tbl_rconsolidado set ?`;
+      await pool.query(sqlConsolidado, [newForm]);
+      req.flash('success', 'Registrado Correctamente!');
+      res.redirect('/form');
+    }
   } catch {
     req.flash('message', 'Ups! hubo un error en el registro del caso');
     res.redirect('/form');
@@ -52,6 +84,18 @@ router.get('/admincasos', isLoggedIn, async (req, res) => {
   } catch (error) {
     console.log("CATCH");
     res.render('401');
+  }
+});
+
+router.post('/consultacasos', async (req, res) => {
+  try {    
+      const sql = "SELECT * FROM tbl_rformulario_escalamiento;"
+      // console.log(sql);
+      const consulta = await pool.query(sql);
+      // console.log(consulta)
+      res.json(consulta)
+  } catch (error) {
+    console.log('Error')
   }
 });
 

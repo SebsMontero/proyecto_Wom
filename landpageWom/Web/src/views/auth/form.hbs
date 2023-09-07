@@ -44,11 +44,15 @@
                 <div class="form-row">
 
                   <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                    <label class="form-control-label text-muted" for="txtcasott">Caso TT</label>
-                    <input type="text" name="casott" id="txtcasott" class="form-control" data-toggle="tooltip"
-                      data-placement="bottom" placeholder="" autocomplete="off" maxlength="20" autofocus required>
-                    <div id="casottWarning" class="text-danger"></div>
-                  </div>
+    <label class="form-control-label text-muted" for="txtcasott">Caso TT</label>
+    <div class="autocomplete">
+        <input type="text" name="casott" id="txtcasott" class="form-control" data-toggle="tooltip"
+            data-placement="bottom" placeholder="" autocomplete="off" maxlength="20" autofocus required>
+        <ul id="sugerencias" class="autocomplete-list"></ul>
+    </div>
+    <div id="casottWarning" class="text-danger"></div>
+</div>
+
 
                   <body>
                     <div class="form-group col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -67,7 +71,7 @@
                       <div class="input-group-prepend">
                         <label class="form-control-label text-muted" for="txttipo_causal">Causal de escalamiento</label>
                       </div>
-                      <select class="custom-select form-control" name="causal" id="txtpos_venta" autofocus required>
+                      <select class="custom-select form-control" name="causal" id="txtipos_causal" autofocus required>
                         <option value="">Elige una opción</option>
                       </select>
                     </div>
@@ -179,4 +183,4 @@
 </body>
 
 
-<script src="js/reporting/cursos_disponibles.js"></script>
+<script src="js/reporting/formulario_escalamiento.js"></script>
