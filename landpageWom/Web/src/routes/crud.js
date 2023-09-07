@@ -69,19 +69,19 @@ router.post('/adminusuarios/:id', isLoggedIn, async (req, res) => {
 
 
 /* Cursos */
-/* router.get('/admincursos', isLoggedIn, async (req, res) => {
+router.get('/adminmensajes', isLoggedIn, async (req, res) => {
     try {
         if (req.user.USU_CROL == "Administrador" || req.user.USU_CROL == "Supervisor") {
-            const sql = `SELECT * FROM ${DB}.tbl_rcursos_disponibles`;
+            const sql = `SELECT * FROM tbl_rformulario_escalamiento`;
             const users = await pool.query(sql);
-            res.render('crud/admincursos', {users});
+            res.render('crud/adminmensajes', {users});
         }  else {
             res.redirect('/redirect');
         } 
     } catch (error) {
         res.render('401');
     }
-}); */
+});
 
 /* Registro Cursos */
 /* router.post('/admincursos', isLoggedIn, async (req, res) => {
