@@ -1,94 +1,24 @@
-<head>
-
-    <title>Cargador Base</title>
-
-</head>
-
-<div class="content content-page">
-    <div class="container-fluid">
-        {{!-- Titulo pagina --}}
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box">
-                    <h4 class="page-title">Cargador de Archivo (EXCEL)</h4>
-                </div>
-            </div>
-        </div>
-        {{!-- Fin Titulo pagina --}}
-
-        {{!-- Masivos --}}
-
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    {{> message }}
-                    <div class="form-row">
-
-                        <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3">
-                            <div class="input-group-prepend">
-                                <label for="txtproceso" class="col-form-label">Proceso</label>
-                            </div>
-                            <select class="custom-select form-control" name="proceso" id="txtproceso"
-                                onchange="proceso(this.value);" required>
-                                <option value="">Elige una opción</option>
-                                <option value="TTS">TTS</option>
-                                <option value="BIDIRECCIONAL">BIDIRECCIONAL</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 d-none tts bidireccional enBlanco">
-                            <div class="input-group-prepend">
-                                <label for="txtflujo_proceso" class="col-form-label">Flujo</label>
-                            </div>
-                            <select class="custom-select form-control" name="flujo_proceso" id="txtflujo_proceso"
-                                required>
-                                <option value="">Elige una opción</option>
-                            </select>
-                        </div>
-                       
-                        <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 d-none bidireccional enBlanco exepcion">
-                            <div class="input-group-prepend">
-                                <label for="txtseguimiento" class="col-form-label">Seguimiento</label>
-                            </div>
-                            <select class="custom-select form-control" name="seguimiento" id="txtseguimiento" onchange="seguimiento(this.value);" required>
-                                <option value="">Elige una opción</option>
-                                <option value="Si">Si</option>
-                                <option value="No">No</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group col-sm-6 col-md-6 col-lg-3 col-xl-3 d-none seguimiento enBlanco exepcion">
-                            <label for="txtfecha_fin_seguimiento" class="col-form-label">Fecha fin seguimiento</label>
-                            <input type="date" name="fecha_fin_seguimiento" id="txtfecha_fin_seguimiento"
-                                class="form-control" data-toggle="tooltip" data-placement="bottom"
-                                placeholder="21/07/1988" autocomplete="off" required>
-                        </div>
-
-
-                        <div class="form-group col-sm-12 col-md-12 col-lg-12 col-xl-12 d-none tts enBlanco exepcion1" style="border: #414141 2px dashed;">
-                            <h4>
-                                <center>SELECCIONE EL ARCHIVO EN FORMATO (EXCEL)</center>
-                            </h4>
-                            <div class="input-group">
-                                <input type="file" class="form-control-file" name='archivos_excel' id="inpFileEXC">
-                            </div>
-                            </br>
-                            <div class="">
-                                <center>
-                                    <span class="btn btn-secondary" id="btnRegistrarEXC">
-                                        <iclass="far fa-file-excel"></i> Cargar
-                                    </span>
-                                </center>
-                            </div></br>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card4 text-center" style="border: 2px dashed #474747;">
+    <div class="card-header" style="background-color: #2F1E4A; color: white;">
+      Featured
     </div>
+    <div class="card-body">
+      <h5 class="card-title">Cargue de Archivos</h5>
+      <p class="card-text">SELECCIONE EL ARCHIVO EN FORMATO (EXCEL)</p>
+      <button class="btn btn-primary file-button" onclick="document.getElementById('fileInput').click();">
+        <i class="fas fa-file-excel"></i> Seleccionar Excel
+      </button>
+      <input type="file" id="fileInput" accept=".xlsx" style="display: none;" onchange="handleFileUpload(this)">
+      <div id="uploadStatus" class="mt-3"></div>
+      <div id="fileName" class="mt-3"></div>
+    </div>
+    <div class="card-footer text-muted" id="updateTimeFooter" style="background-color: #2F1E4A; color: white;">
+      Última actualización: <span id="lastUpdateTime"></span>
+    </div>
+  </div>
 </div>
+
 
 <script src="js/reporting/cargador.js"></script>
 <script src="js/reporting/usuarios_diponibles.js"></script>
