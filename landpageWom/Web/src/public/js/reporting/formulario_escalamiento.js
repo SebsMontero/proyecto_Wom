@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (this.value === "SI") {
             causalSelect.innerHTML = `
                 <option value="">Elige una opción</option>
-                <option value="Caso no ha sido escalado.">Caso no ha sido escalado.</option>
+                <option value="Caso no ha sido gestionado.">Caso no ha sido gestionado.</option>
                 <option value="Llamar Nuevamente.">Llamar Nuevamente.</option>
                 <option value="Confirmar Numero de Contacto.">Confirmar Numero de Contacto.</option>
                 <option value="Continua la Restricción en Evidente, TT Aprobado.">Continua la Restricción en Evidente, TT Aprobado.</option>
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const causalSelect = document.getElementById("txtipos_causal");
         causalSelect.innerHTML = `
             <option value="">Elige una opción</option>
-            <option value="Caso no ha sido escalado.">Caso no ha sido escalado.</option>
+            <option value="Caso no ha sido gestionado.">Caso no ha sido gestionado.</option>
             <option value="Llamar Nuevamente.">Llamar Nuevamente.</option>
             <option value="Confirmar Numero de Contacto.">Confirmar Numero de Contacto.</option>
             <option value="Continua la Restricción en Evidente, TT Aprobado.">Continua la Restricción en Evidente, TT Aprobado.</option>

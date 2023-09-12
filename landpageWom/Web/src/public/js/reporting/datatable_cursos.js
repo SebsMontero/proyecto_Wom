@@ -39,17 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             },
             {
-                extend: 'csv',
-                exportOptions: {
-                    columns: [0, 2, 3, 4, 5, 6, 7]
-                }
-            },
-            {
                 text: 'Cargar Archivo',
                 action: function (e, dt, button, config) {
                     window.location.href = '/gestionBot';
                 }
-            }        
+            },
         ],
         language: {
             lengthMenu: "Mostrar _MENU_ registros",

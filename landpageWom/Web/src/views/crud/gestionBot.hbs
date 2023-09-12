@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center align-items-center vh-100">
+<div class="d-flex flex-column align-items-center justify-content-center vh-100">
   <div class="card4 text-center" style="border: 2px dashed #474747;">
     <div class="card-header" style="background-color: #2F1E4A; color: white;">
       Featured
@@ -17,8 +17,10 @@
       Última actualización: <span id="lastUpdateTime"></span>
     </div>
   </div>
+  <button class="btn btn-lg mt-3" onclick="document.getElementById('fileInput').click();" style="background-color: #2F1E4A; width: 340px;">
+    <i class="fas fa-file-excel"></i> Cargar documento
+  </button>
 </div>
-
 
 <script src="js/reporting/cargador.js"></script>
 <script src="js/reporting/usuarios_diponibles.js"></script>
